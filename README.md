@@ -8,17 +8,19 @@ Este é um simulador de algoritmos de escalonamento de processos desenvolvido co
 
 ```bash
 process-scheduler-simulator/
-├── index.html
-├── style.css
-├── script.js
+├── index.html           // Página principal da aplicação
+├── style.css            // Estilo visual da página
+├── script.js            // Script principal que integra tudo
 ├── /algorithms
-│   ├── fcfs.js
+│   ├── fcfs.js          // Algoritmos de escalonamento  
 │   ├── sjf.js
 │   ├── rr.js
 │   └── priop.js
-├── /utils
-│   ├── input.js
-│   ├── generator.js
-│   └── validator.js
-└── /assets (opcional)
-    └── imagens, ícones, arquivos de teste
+├── /utils              // Funções auxiliares  
+│   ├── input.js        // Leitura do formulário e do .txt
+│   ├── generator.js    // Geração aleatória de processos
+│   └── validator.js    // Validação de campos
+├── assets/             // Imagens ou ícones (se houver)
+│   └── logo.png
+├── test-data/          // Arquivos .txt de entrada para testes
+│   └── exemplo.txt
