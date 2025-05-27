@@ -11,16 +11,16 @@ process-scheduler-simulator/
 ├── index.html           // Página principal da aplicação
 ├── style.css            // Estilo visual da página
 ├── script.js            // Script principal que integra tudo
-├── /algorithms
-│   ├── fcfs.js          // Algoritmos de escalonamento  
+├── /algorithms          // Algoritmos de escalonamento
+│   ├── fcfs.js            
 │   ├── sjf.js
 │   ├── rr.js
 │   └── priop.js
-├── /utils              // Funções auxiliares  
-│   ├── input.js        // Leitura do formulário e do .txt
-│   ├── generator.js    // Geração aleatória de processos
-│   └── validator.js    // Validação de campos
-├── assets/             // Imagens ou ícones (se houver)
+├── /utils               // Funções auxiliares  
+│   ├── input.js         // Leitura do formulário e do .txt
+│   ├── generator.js     // Geração aleatória de processos
+│   └── validator.js     // Validação de campos
+├── assets/              // Imagens ou ícones (se houver)
 │   └── logo.png
-├── test-data/          // Arquivos .txt de entrada para testes
+├── test-data/           // Arquivos .txt de entrada para testes
 │   └── exemplo.txt
