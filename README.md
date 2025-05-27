@@ -1,13 +1,13 @@
 # Process Scheduler Simulator
 
-Este é um simulador de algoritmos de escalonamento de processos desenvolvido com **HTML**, **CSS** e **JavaScript**, com foco educacional e didático. O objetivo é permitir a simulação visual e interativa de diferentes algoritmos de escalonamento de tarefas em sistemas operacionais.
+Este é um simulador de algoritmos de escalonamento de processos desenvolvido com **HTML**, **CSS** e **JavaScript**, com foco no aprendizado prático e no desenvolvimento de habilidades em projetos reais. O objetivo é permitir a simulação visual e interativa de diferentes algoritmos de escalonamento de tarefas em sistemas operacionais.
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## Estrutura do Projeto
 
 ```bash
-📦 process-scheduler-simulator/
+process-scheduler-simulator/
 ├── index.html
 ├── style.css
 ├── script.js
