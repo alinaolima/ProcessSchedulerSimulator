@@ -1,12 +1,30 @@
-/*
-  style.css
-  Estilos básicos da interface do simulador de escalonamento de processos.
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
 
-  Objetivo:
-  - Organizar visualmente os elementos da página
-  - Garantir responsividade mínima
-  - Tornar a interface clara e funcional para o usuário
+.row {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
-  Observação:
-  O design está focado na organização e não no visual final neste momento.
-*/
+.row input[type="number"] {
+    width: 120px;
+}
+
+.row span {
+    display: inline-table;
+    width: 130px;
+}
+
+button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.header span {
+    font-weight: bold;
+}
