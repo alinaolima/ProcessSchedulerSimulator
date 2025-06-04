@@ -10,3 +10,35 @@
   Observação:
   O design está focado na organização e não no visual final neste momento.
 */
+.geracao-btn {
+
+  padding: 5px 5px;
+  width: 40px;
+  color: #292727;
+  background: #4e4a4a;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.geracao-btn:hover {
+  background: #70736f;
+
+}
+
+.importar-txt {
+  padding: 5px 5px;
+  width: 40px;
+  color: #292727;
+  background: #4e4a4a;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.importar-txt:hover{
+  background: #70736f;
+}
