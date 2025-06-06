@@ -26,9 +26,9 @@
   align-items: center;
   padding: 2px 2px;
   width: 26px;
-  color: #292727;
-  background: #4e4a4a;
-  border: 1px solid #ffffff;
+  color: #0f0f0f;
+  background: #fdfcfc;
+  border: 1px solid #090909;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
@@ -41,9 +41,9 @@
   align-items: center;
   padding: 2px 2px;
   width: 30px;
-  color: #292727;
-  background: #4e4a4a;
-  border: 1px solid #ffffff;
+  color: #0c0b0b;
+  background: #f8f4f4;
+  border: 1px solid #000000;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
