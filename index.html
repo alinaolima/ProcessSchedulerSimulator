@@ -47,7 +47,7 @@
           <option value="pp"> Priority Preemptive</option>
         </select>
       </div>
-      
+
       <div id="options-quantum" class="hidden">
         <label for="quantum">Quantum</label>
         <input type="number" id="quantum" min="1" value="2">
@@ -60,7 +60,7 @@
           <option value="desc">Larger to Smaller</option>
         </select>
       </div>
-      
+
 
       <div class="select-group">
         <label for="mode">Mode</label>
@@ -69,17 +69,22 @@
           <option value="aao"> All at Once</option>
         </select>
       </div>
-      
-      <div class="geracao-btn">
-        <span class="material-symbols-outlined" translate="no">
-          shuffle
-        </span>
+
+      <div class="botoes-container">
+        <button id="geracao-aleatoria" class="geracao-btn">
+          <span class="material-symbols-outlined" translate="no">
+            shuffle
+          </span>
+        </button>
       </div>
 
       <div class="importar-txt">
-        <span class="material-symbols-outlined" translate="no">
-          upload
-        </span>
+        <input type="file" id="file-input" accept=".txt"class="sem-file-input">
+        <label for="file-input" class="importar-btn">
+          <span class="material-symbols-outlined" translate="no">
+            upload
+          </span>
+        </label>
       </div>
 
       <table>
