@@ -2,7 +2,7 @@ let nextPid = 1;
 const container = document.getElementById('form-container');
 const addBtn = document.getElementById('add-btn');
 const clearBtn = document.getElementById('clear-btn');
-const readBtn = document.getElementById('read-btn');
+const simulateBtn = document.getElementById('simulate-btn');
 
 addBtn.addEventListener('click', () => {
     // Adiciona cabeçalhos se for a primeira linha
@@ -73,15 +73,15 @@ clearBtn.addEventListener('click', () => {
     nextPid = 1;
 });
 
-readBtn.addEventListener('click', () => {
+simulateBtn.addEventListener('click', () => {
     const processos = [];
 
-    for(let pid = 1; pid < nextPid; pid++){
+    for (let pid = 1; pid < nextPid; pid++) {
         const arrival = document.getElementById(`arrival-${pid}`);
         const duration = document.getElementById(`duration-${pid}`);
         const priority = document.getElementById(`priority-${pid}`);
 
-        if (arrival && duration && priority){
+        if (arrival && duration && priority) {
             processos.push({
                 pid: pid,
                 arrival: Number(arrival.value),
@@ -94,3 +94,8 @@ readBtn.addEventListener('click', () => {
     console.log(processos);
     alert(JSON.stringify(processos, null, 2));
 });
+
+
+
+
+
