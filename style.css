@@ -10,34 +10,47 @@
   Observação:
   O design está focado na organização e não no visual final neste momento.
 */
-.geracao-btn {
+
+.sem-file-input {
+  display: none;
+}
+
+.botoes-container {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.importar-btn {
+  display: flex;
+  align-items: center;
   padding: 2px 2px;
-  width: 40px;
+  width: 26px;
   color: #292727;
   background: #4e4a4a;
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
-
+  justify-content: center;
+  
 }
 
-.geracao-btn:hover {
-  background: #70736f;
-
-}
-
-.importar-txt {
+.geracao-btn{
+  display: flex;
+  align-items: center;
   padding: 2px 2px;
-  width: 40px;
+  width: 30px;
   color: #292727;
   background: #4e4a4a;
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+  justify-content: center;
 }
-
-.importar-txt:hover {
+.geracao-btn:hover,
+.importar-btn:hover {
   background: #70736f;
+
 }
