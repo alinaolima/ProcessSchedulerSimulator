@@ -2,7 +2,7 @@ let nextPid = 1;
 const container = document.getElementById('form-container');
 const addBtn = document.getElementById('add-btn');
 const clearBtn = document.getElementById('clear-btn');
-const simulateBtn = document.getElementById('simulate-btn');
+const simulateBtn = document.getElementById('start-simulation');
 
 addBtn.addEventListener('click', () => {
     // Adiciona cabeçalhos se for a primeira linha
