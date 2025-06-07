@@ -1,30 +1,75 @@
+.sem-file-input {
+  display: none;
+}
+
+.botoes-container {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.importar-btn {
+  display: flex;
+  align-items: center;
+  padding: 2px 2px;
+  width: 26px;
+  color: #0f0f0f;
+  background: #fdfcfc;
+  border: 1px solid #090909;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+
+}
+
+.geracao-btn {
+  display: flex;
+  align-items: center;
+  padding: 2px 2px;
+  width: 30px;
+  color: #0c0b0b;
+  background: #f8f4f4;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.geracao-btn:hover,
+.importar-btn:hover {
+  background: #70736f;
+
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  font-family: Arial, sans-serif;
+  margin: 20px;
 }
 
 .row {
-    display: flex;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .row input[type="number"] {
-    width: 120px;
+  width: 120px;
 }
 
 .row span {
-    display: inline-table;
-    width: 130px;
+  display: inline-table;
+  width: 130px;
 }
 
 button {
-    margin-right: 10px;
-    padding: 6px 12px;
-    font-size: 14px;
+  margin-right: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
 }
 
 .header span {
-    font-weight: bold;
+  font-weight: bold;
 }
