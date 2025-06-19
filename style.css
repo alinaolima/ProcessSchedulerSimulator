@@ -1,75 +1,130 @@
-.sem-file-input {
+/* styles.css */
+
+* {
+  font-family: sans-serif;
+}
+
+#main {
+  margin: 2.5% 15%;
+}
+
+#header {
+  text-align: center;
+}
+
+/* Configurações */
+#settings {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.setting-item label {
+  font-weight: bold;
+  margin-left: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.setting-item select,
+.setting-item input {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 0.12rem solid #999;
+  border-radius: 1rem;
+}
+
+#algorithm {
+  width: 14rem;
+}
+
+#quantum {
+  width: 4rem;
+}
+
+#priority {
+  width: 9rem;
+}
+
+#mode {
+  width: 7rem;
+}
+
+/* Opções */
+#options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#options-buttons {
+  display: flex;
+  gap: 2rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.25rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  min-width: 4rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #999;
+  cursor: pointer;
+}
+
+.upload {
   display: none;
 }
 
-.botoes-container {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
+/* Formulário */
+.form-header {
+  display: grid;
+  /* colunas serão definidas dinamicamente pelo JS */
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  column-gap: 3rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.75rem;
 }
 
-.importar-btn {
-  display: flex;
-  align-items: center;
-  padding: 2px 2px;
-  width: 26px;
-  color: #0f0f0f;
-  background: #fdfcfc;
-  border: 1px solid #090909;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  justify-content: center;
-
-}
-
-.geracao-btn {
-  display: flex;
-  align-items: center;
-  padding: 2px 2px;
-  width: 30px;
-  color: #0c0b0b;
-  background: #f8f4f4;
-  border: 1px solid #000000;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  justify-content: center;
-}
-
-.geracao-btn:hover,
-.importar-btn:hover {
-  background: #70736f;
-
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-}
-
-.row {
-  display: flex;
-  gap: 60px;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.row input[type="number"] {
-  width: 120px;
-}
-
-.row span {
-  display: inline-table;
-  width: 130px;
-}
-
-button {
-  margin-right: 10px;
-  padding: 6px 12px;
-  font-size: 14px;
-}
-
-.header span {
+.form-header span {
   font-weight: bold;
+}
+
+#form-container .row {
+  display: grid;
+  grid-template-columns: repeat(var(--num-cols), 1fr);
+  column-gap: 3rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+#form-container .row > input[readonly] {
+  background-color: #999;
+  font-weight: bold;
+  width: 5rem;
+}
+
+#form-container .row input[type="number"] {
+  width: 8rem;
+  padding: 0.25rem 0.5rem;
+  border: 0.12rem solid #999;
+  border-radius: 0.5rem;
+}
+
+#btn-start {
+  display: block;
+  margin-top: 1rem;
+  width: 100%;
 }
