@@ -1,101 +1,149 @@
 let nextPid = 1;
-const container = document.getElementById('form-container');
-const addBtn = document.getElementById('add-btn');
-const clearBtn = document.getElementById('clear-btn');
-const simulateBtn = document.getElementById('start-simulation');
+const container       = document.getElementById('form-container');
+const addBtn          = document.getElementById('add-btn');
+const clearBtn        = document.getElementById('btn-clear');
+const simulateBtn     = document.getElementById('btn-start');
+const fileInput       = document.getElementById('file-input');
+const randomBtn       = document.getElementById('btn-random');
+const algorithmSelect = document.getElementById('algorithm');
 
-addBtn.addEventListener('click', () => {
-    // Adiciona cabeçalhos se for a primeira linha
-    if (nextPid === 1) {
-        const header = document.createElement('div');
-        header.classList.add('row', 'header');
-        header.id = 'header-row';
+const quantumItem  = document.querySelector('#quantum').closest('.setting-item');
+const priorityItem = document.querySelector('#priority').closest('.setting-item');
+const modeItem     = document.querySelector('#mode').closest('.setting-item');
+const formHeader   = document.querySelector('.form-header');
 
-        ['PID', 'Arrival time', 'Duration Time', 'Priority Value'].forEach(text => {
-            const span = document.createElement('span');
-            span.textContent = text;
-            header.appendChild(span);
-        });
+// 1) atualiza visibilidade de quantum/priority/mode
+function updateSettingsUI() {
+  const alg = algorithmSelect.value;
+  quantumItem.style.display  = (alg === 'rr' || alg === 'srtf' || alg === 'pp') ? 'flex' : 'none';
+  priorityItem.style.display = (alg === 'pc' || alg === 'pp')          ? 'flex' : 'none';
+  modeItem.style.display     = 'flex';
+}
 
-        container.appendChild(header);
+// 2) atualiza cabeçalho e 3) linhas existentes
+function updateFormDisplay() {
+  const alg = algorithmSelect.value;
+  const showPriority = (alg === 'pc' || alg === 'pp');
+  // cabeçalho
+  const cols = ['PID', 'Arrival Time', 'Duration Time']
+             .concat(showPriority ? ['Priority Value'] : []);
+  formHeader.innerHTML = '';
+  cols.forEach(txt => {
+    const sp = document.createElement('span');
+    sp.textContent = txt;
+    formHeader.appendChild(sp);
+  });
+  formHeader.style.gridTemplateColumns = `repeat(${cols.length}, 1fr)`;
+
+  // ajusta cada row já existente
+  container.querySelectorAll('.row').forEach(row => {
+    // define css var para grid-template-columns
+    row.style.setProperty('--num-cols', cols.length);
+    // mostra/oculta só o <input> de priority
+    const prInp = row.querySelector('input[id^="priority-"]');
+    if (prInp) {
+      prInp.style.display = showPriority ? 'block' : 'none';
     }
+  });
+}
 
-    // Cria nova linha de dados
-    const row = document.createElement('div');
-    row.classList.add('row');
-    row.id = `row-${nextPid}`;
-
-    // Campo PID (não editável)
-    const pidInput = document.createElement('input');
-    pidInput.type = 'number';
-    pidInput.id = `pid-${nextPid}`;
-    pidInput.name = `pid-${nextPid}`;
-    pidInput.value = nextPid;
-    pidInput.readOnly = true;
-
-    // Campo Time Arrival
-    const arrivalInput = document.createElement('input');
-    arrivalInput.type = 'number';
-    arrivalInput.id = `arrival-${nextPid}`;
-    arrivalInput.name = `arrival-${nextPid}`;
-    arrivalInput.value = 0;
-
-    // Campo Time Duration
-    const durationInput = document.createElement('input');
-    durationInput.type = 'number';
-    durationInput.id = `duration-${nextPid}`;
-    durationInput.name = `duration-${nextPid}`;
-    durationInput.value = 0;
-
-    // Campo Priority Value
-    const priorityInput = document.createElement('input');
-    priorityInput.type = 'number';
-    priorityInput.id = `priority-${nextPid}`;
-    priorityInput.name = `priority-${nextPid}`;
-    priorityInput.value = 0;
-
-    // Adiciona inputs na linha
-    row.appendChild(pidInput);
-    row.appendChild(arrivalInput);
-    row.appendChild(durationInput);
-    row.appendChild(priorityInput);
-
-    // Anexa a linha no container
-    container.appendChild(row);
-
-    // Incrementa PID para próxima linha
-    nextPid++;
+algorithmSelect.addEventListener('change', () => {
+  updateSettingsUI();
+  updateFormDisplay();
 });
+// inicializa
+updateSettingsUI();
+updateFormDisplay();
 
+// limpa tudo
 clearBtn.addEventListener('click', () => {
-    // Remove cabeçalhos e todas as linhas
-    container.innerHTML = '';
-    nextPid = 1;
+  container.innerHTML = '';
+  nextPid = 1;
 });
 
-simulateBtn.addEventListener('click', () => {
-    const processos = [];
+// adiciona linha, **sempre** criando os 4 inputs
+function addProcessRow() {
+  const cols = formHeader.querySelectorAll('span').length;
+  const row = document.createElement('div');
+  row.classList.add('row');
+  row.style.setProperty('--num-cols', cols);
 
-    for (let pid = 1; pid < nextPid; pid++) {
-        const arrival = document.getElementById(`arrival-${pid}`);
-        const duration = document.getElementById(`duration-${pid}`);
-        const priority = document.getElementById(`priority-${pid}`);
+  // PID
+  const pidInput = document.createElement('input');
+  pidInput.type = 'number';
+  pidInput.value = nextPid++;
+  pidInput.readOnly = true;
+  row.appendChild(pidInput);
 
-        if (arrival && duration && priority) {
-            processos.push({
-                pid: pid,
-                arrival: Number(arrival.value),
-                duration: Number(duration.value),
-                priority: Number(priority.value)
-            });
-        }
+  // Arrival e Duration
+  ['arrival', 'duration'].forEach(field => {
+    const inp = document.createElement('input');
+    inp.type = 'number';
+    inp.id = `${field}-${nextPid-1}`;
+    inp.value = 0;
+    row.appendChild(inp);
+  });
+
+  // Priority (sempre criado, mas ocultável)
+  const pr = document.createElement('input');
+  pr.type = 'number';
+  pr.id = `priority-${nextPid-1}`;
+  pr.value = 0;
+  row.appendChild(pr);
+
+  container.appendChild(row);
+
+  // logo após criar, aplica a visibilidade correta
+  // (assim já fica consistente com o alg. atual)
+  const alg = algorithmSelect.value;
+  pr.style.display = (alg === 'pc' || alg === 'pp') ? 'block' : 'none';
+}
+
+addBtn.addEventListener('click', addProcessRow);
+
+// random só preenche as linhas existentes
+randomBtn.addEventListener('click', () => {
+  const rows  = container.querySelectorAll('.row');
+  if (rows.length === 0) {
+    alert('Não há processos para gerar valores aleatórios. Adicione ao menos um.');
+    return;
+  }
+  rows.forEach((row, idx) => {
+    const pid = idx + 1;
+    document.getElementById(`arrival-${pid}`).value  = Math.floor(Math.random() * 10);
+    document.getElementById(`duration-${pid}`).value = Math.floor(Math.random() * 10) + 1;
+    const pr = document.getElementById(`priority-${pid}`);
+    if (pr && pr.style.display !== 'none') {
+      pr.value = Math.floor(Math.random() * 5);
     }
-
-    console.log(processos);
-    alert(JSON.stringify(processos, null, 2));
+  });
 });
 
+// simulate e upload (sem alterações)
+simulateBtn.addEventListener('click', () => {
+  const processos = [];
+  for (let pid = 1; pid < nextPid; pid++) {
+    processos.push({
+      pid,
+      arrival : Number(document.getElementById(`arrival-${pid}`).value),
+      duration: Number(document.getElementById(`duration-${pid}`).value),
+      // prioridade undefined se oculto
+      priority: document.getElementById(`priority-${pid}`).style.display === 'none'
+                ? undefined
+                : Number(document.getElementById(`priority-${pid}`).value)
+    });
+  }
+  console.log(processos);
+  alert(JSON.stringify(processos, null, 2));
+});
 
-
-
-
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    console.log(reader.result);
+    alert('Arquivo carregado! Veja o console para o conteúdo.');
+  };
+  reader.readAsText(file);
+});
